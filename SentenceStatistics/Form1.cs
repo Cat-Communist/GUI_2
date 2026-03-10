@@ -1,3 +1,5 @@
+using System.Windows.Forms.DataVisualization.Charting;
+
 namespace SentenceStatistics
 {
     public partial class Form1 : Form
@@ -22,7 +24,10 @@ namespace SentenceStatistics
                 return;
             }
 
-            MessageBox.Show(inputSentence);
+            statChart.Series.Clear();
+            statChart.Legends.Clear();
+
+            
         }
     }
 

@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             label1 = new Label();
             txtInputSentence = new TextBox();
             CalcPercentage = new Button();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            statChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)statChart).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -65,37 +65,37 @@
             CalcPercentage.UseVisualStyleBackColor = true;
             CalcPercentage.Click += CalcPercentage_Click;
             // 
-            // chart1
+            // statChart
             // 
-            chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(23, 121);
-            chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(749, 317);
-            chart1.TabIndex = 3;
-            chart1.Text = "chart1";
-            title1.Name = "Проценты букв";
-            chart1.Titles.Add(title1);
+            chartArea2.Name = "ChartArea1";
+            statChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            statChart.Legends.Add(legend2);
+            statChart.Location = new Point(23, 121);
+            statChart.Name = "statChart";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            statChart.Series.Add(series2);
+            statChart.Size = new Size(749, 317);
+            statChart.TabIndex = 3;
+            statChart.Text = "chart1";
+            title2.Name = "Проценты букв";
+            statChart.Titles.Add(title2);
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(chart1);
+            Controls.Add(statChart);
             Controls.Add(CalcPercentage);
             Controls.Add(txtInputSentence);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)statChart).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -105,6 +105,6 @@
         private Label label1;
         private TextBox txtInputSentence;
         private Button CalcPercentage;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart statChart;
     }
 }
