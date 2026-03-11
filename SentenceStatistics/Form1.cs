@@ -1,3 +1,4 @@
+
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SentenceStatistics
@@ -7,6 +8,7 @@ namespace SentenceStatistics
         public Form1()
         {
             InitializeComponent();
+            txtInputSentence.Text = Properties.Settings.Default.inputSentence;
         }
 
         private void CalcPercentage_Click(object sender, EventArgs e)
@@ -17,40 +19,48 @@ namespace SentenceStatistics
                 inputSentence = txtInputSentence.Text;
                 if (string.IsNullOrEmpty(inputSentence))
                     throw new FormatException("Поле не должно быть пустым");
-            } 
-            catch(FormatException ex)
+            }
+            catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            statChart.Series.Clear();
-            statChart.Legends.Clear();
+            Dictionary<string, double> letterPercentage = Logic.CalcLetterPercentage(txtInputSentence.Text);
+            pieChart.Series["chartSeries"].Points.DataBindXY(letterPercentage.Keys, letterPercentage.Values);
+        }
 
-            
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.inputSentence = txtInputSentence.Text;
+            Properties.Settings.Default.Save();
         }
     }
 
     public class Logic
     {
-        public static string CalcPercentage(string inputString)
+        public static Dictionary<string, double> CalcLetterPercentage(string inputString)
         {
-            Dictionary<char, int> dictionary = new();
+            Dictionary<string, double> dictionary = new();
             foreach (var c in inputString.ToLower())
             {
-                if (dictionary.ContainsKey(c) && Char.IsLetter(c))
-                    dictionary[c]++;
+                if (dictionary.ContainsKey(c.ToString()) && Char.IsLetter(c))
+                    dictionary[c.ToString()]++;
                 else if (Char.IsLetter(c))
-                    dictionary[c] = 1;
+                    dictionary[c.ToString()] = 1;
             }
 
-            var totalLetter = dictionary.Values.Sum();
+            var total = dictionary.Values.Sum();
+            foreach (var key in dictionary.Keys)
+            {
+                dictionary[key] = Math.Round(dictionary[key] / total * 100, 2);
+            }
 
-            var outputMsg = "";
-            foreach (var pair in dictionary)
-                outputMsg += $"{pair.Key} = {(float)pair.Value / totalLetter * 100:F2}%\n";
+            //var outputMsg = "";
+            //foreach (var pair in dictionary)
+            //    outputMsg += $"{pair.Key} = {(float)pair.Value / totalLetter * 100:F2}%\n";
 
-            return outputMsg;
+            return dictionary;
         }
     }
 }

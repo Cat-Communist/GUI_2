@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             label1 = new Label();
             txtInputSentence = new TextBox();
             CalcPercentage = new Button();
-            statChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)statChart).BeginInit();
+            pieChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            ((System.ComponentModel.ISupportInitialize)pieChart).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -52,7 +52,7 @@
             // 
             txtInputSentence.Location = new Point(22, 38);
             txtInputSentence.Name = "txtInputSentence";
-            txtInputSentence.Size = new Size(750, 27);
+            txtInputSentence.Size = new Size(755, 27);
             txtInputSentence.TabIndex = 1;
             // 
             // CalcPercentage
@@ -65,37 +65,46 @@
             CalcPercentage.UseVisualStyleBackColor = true;
             CalcPercentage.Click += CalcPercentage_Click;
             // 
-            // statChart
+            // pieChart
             // 
-            chartArea2.Name = "ChartArea1";
-            statChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            statChart.Legends.Add(legend2);
-            statChart.Location = new Point(23, 121);
-            statChart.Name = "statChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            statChart.Series.Add(series2);
-            statChart.Size = new Size(749, 317);
-            statChart.TabIndex = 3;
-            statChart.Text = "chart1";
-            title2.Name = "Проценты букв";
-            statChart.Titles.Add(title2);
+            chartArea1.Name = "ChartArea1";
+            pieChart.ChartAreas.Add(chartArea1);
+            legend1.Font = new Font("Calibri", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            legend1.IsTextAutoFit = false;
+            legend1.Name = "Legend1";
+            pieChart.Legends.Add(legend1);
+            pieChart.Location = new Point(23, 107);
+            pieChart.Name = "pieChart";
+            pieChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new Font("Calibri", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "chartSeries";
+            series1.SmartLabelStyle.AllowOutsidePlotArea = System.Windows.Forms.DataVisualization.Charting.LabelOutsidePlotAreaStyle.No;
+            pieChart.Series.Add(series1);
+            pieChart.Size = new Size(754, 277);
+            pieChart.TabIndex = 3;
+            pieChart.Text = "chart1";
+            title1.Font = new Font("Calibri", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            title1.Name = "Title1";
+            title1.Text = "Процент букв в предложении";
+            pieChart.Titles.Add(title1);
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(statChart);
+            Controls.Add(pieChart);
             Controls.Add(CalcPercentage);
             Controls.Add(txtInputSentence);
             Controls.Add(label1);
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)statChart).EndInit();
+            FormClosing += Form1_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)pieChart).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -105,6 +114,6 @@
         private Label label1;
         private TextBox txtInputSentence;
         private Button CalcPercentage;
-        private System.Windows.Forms.DataVisualization.Charting.Chart statChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pieChart;
     }
 }
